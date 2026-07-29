@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting eligibility</title>
+
+     <style>
+        body {
+           background: linear-gradient(to right, #9d14ff, #316bff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        button {
+            background: linear-gradient(to right, #5fff7a, #e6fe7b);
+            border: solid 1px rgb(0, 4, 88);
+            border-radius: 20px;
+            color: rgb(255, 5, 130);
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        function info() {
+            const input = prompt("Enter your age:");
+            const age = parseInt(input, 10);
+            if (age < 0 || isNaN(age)) {
+                alert("Please enter a valid number for age.");
+                return;
+            }
+            if (age < 18) {
+                alert("You are not eligible to vote.");
+            } else {
+                let c = confirm("Are you sure you want to submit?");
+                if (c) {
+                    alert("Your vote has been submitted.");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <button onclick="info()">Vote</button>
+    
+    
+</body>
+</html>
