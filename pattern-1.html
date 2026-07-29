@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern 1</title>
+    <style>
+        body {
+            background-color: rgb(187, 252, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        button {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            border: solid 1px rgb(0, 4, 88);
+            border-radius: 20px;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+    </style>
+    <script>
+        function pattern1() {
+            const n = parseInt(prompt("Enter the number of rows:"), 10);
+            let pattern = "";
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j <= i; j++) {
+                    pattern += "*";
+                }
+                pattern += "<br>";
+            }
+            document.getElementById("output").innerHTML = pattern;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="output"></div>
+    <button onclick="pattern1()">Display Pattern</button>
+
+</body>
+
+</html>
