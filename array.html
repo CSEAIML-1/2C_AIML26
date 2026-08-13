@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #35ff11, #ccff27);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff004c;
+            color: white;
+            border: 2px solid #000000;
+            border-radius: 20px;
+        }
+
+        #arrayOutput {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            background-color: rgb(143, 231, 255);
+            padding: 15px;
+            border-radius: 5px;
+            border: #333 solid 2px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Javascript Array Functions</h2>
+
+    <button onclick="displayArray()">Display Array</button>
+    <div id="arrayOutput"></div>
+
+
+
+    <script>
+
+        function displayArray() {
+
+            let  a = [24, 25, 26, 27, 28, 29];
+        document.getElementById("arrayOutput").innerHTML = "Initial Array: " + a.join(", ");
+
+        a.push(30);
+        document.getElementById("arrayOutput").innerHTML += "<br>After push(30): " + a.join(", ");
+
+        a.push(31, 32);
+        document.getElementById("arrayOutput").innerHTML += "<br>After push(31, 32): " + a.join(", ");
+
+        a.pop();
+        document.getElementById("arrayOutput").innerHTML += "<br>After pop(): " + a.join(", ");
+
+        let b = a.slice(2, 5);
+        document.getElementById("arrayOutput").innerHTML += "<br>Sliced Array: " + b.join(", ");
+
+        let combinedArrays = a.concat(b);
+        document.getElementById("arrayOutput").innerHTML += "<br>Combined Arrays: " + combinedArrays.join(", ");
+
+        a.length = 3;
+        document.getElementById("arrayOutput").innerHTML += "<br>After setting length to 3: " + a.join(", ");
+            document.getElementById("arrayOutput").innerHTML = "Initial Array: " + arr.join(", ");
+        }
+        
+
+
+
+    </script>
+    
+</body>
+</html>
