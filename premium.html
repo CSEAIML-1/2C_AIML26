@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Premium Registration</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+            background: #050510;
+        }
+
+        /* ================= VIDEO BACKGROUND ================= */
+
+        .video-bg {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -3;
+        }
+
+        .video-overlay {
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(5, 5, 20, 0.85),
+                    rgba(30, 5, 50, 0.65),
+                    rgba(0, 10, 35, 0.80)
+                );
+            z-index: -2;
+        }
+
+        /* ================= ANIMATED LIGHTS ================= */
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.45;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            background: #a100ff;
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb2 {
+            width: 350px;
+            height: 350px;
+            background: #0066ff;
+            bottom: -150px;
+            right: -100px;
+            animation-delay: 2s;
+        }
+
+        .orb3 {
+            width: 220px;
+            height: 220px;
+            background: #ff00c8;
+            top: 40%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, -40px) scale(1.15);
+            }
+        }
+
+        /* ================= FORM CARD ================= */
+
+        .container {
+            width: 420px;
+            max-width: 92%;
+            padding: 35px;
+
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 25px;
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+            animation: cardAppear 1s ease;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ================= HEADING ================= */
+
+        .heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .heading h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #dca7ff,
+                #9e7cff
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            
+        }
+
+        .heading p {
+            margin-top: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        /* ================= INPUT GROUP ================= */
+
+        .input-group {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        input {
+            width: 100%;
+            height: 48px;
+            padding: 0 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+
+            outline: none;
+
+            color: white;
+            background: rgba(255, 255, 255, 0.08);
+
+            font-size: 14px;
+
+            transition:
+                0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        input:focus {
+            border-color: #b45cff;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            box-shadow:
+                0 0 0 3px rgba(180, 92, 255, 0.12),
+                0 0 25px rgba(180, 92, 255, 0.18);
+
+            transform: translateY(-1px);
+        }
+
+        /* ================= BUTTON ================= */
+
+        button {
+            position: relative;
+            width: 100%;
+            height: 50px;
+
+            margin-top: 8px;
+
+            border: none;
+            border-radius: 14px;
+
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #9d35ff,
+                    #6b4cff,
+                    #b92cff
+                );
+
+            box-shadow:
+                0 10px 30px rgba(145, 54, 255, 0.35);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.35),
+                transparent
+            );
+
+            transform: skewX(-20deg);
+            transition: 0.6s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 40px rgba(145, 54, 255, 0.55),
+                0 0 25px rgba(190, 70, 255, 0.25);
+        }
+
+        button:hover::before {
+            left: 130%;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        /* ================= SUCCESS SCREEN ================= */
+
+        .success-screen {
+            position: fixed;
+            inset: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: rgba(5, 5, 15, 0.75);
+            backdrop-filter: blur(15px);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.5s ease;
+
+            z-index: 100;
+        }
+
+        .success-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-box {
+            width: 380px;
+            max-width: 90%;
+
+            padding: 40px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(25px);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.55);
+
+            transform: scale(0.7);
+            transition: 0.5s ease;
+        }
+
+        .success-screen.active .success-box {
+            transform: scale(1);
+        }
+
+        /* ================= CHECKMARK ================= */
+
+        .check-circle {
+            width: 90px;
+            height: 90px;
+
+            margin: auto;
+            margin-bottom: 22px;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 3px solid #8affc1;
+
+            box-shadow:
+                0 0 30px rgba(50, 255, 160, 0.35);
+
+            animation: pop 0.6s ease;
+        }
+
+        .check {
+            width: 38px;
+            height: 20px;
+
+            border-left: 4px solid #8affc1;
+            border-bottom: 4px solid #8affc1;
+
+            transform: rotate(-45deg) scale(0);
+
+            animation: checkmark 0.5s 0.4s forwards;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0);
+            }
+
+            70% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes checkmark {
+            to {
+                transform: rotate(-45deg) scale(1);
+            }
+        }
+
+        .success-box h2 {
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .success-box p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 14px;
+        }
+
+        .success-line {
+            width: 0;
+            height: 3px;
+
+            margin: 22px auto 0;
+
+            border-radius: 10px;
+
+            background: linear-gradient(
+                90deg,
+                #9d35ff,
+                #8affc1
+            );
+
+            animation: successLine 1s 0.5s forwards;
+        }
+
+        @keyframes successLine {
+            to {
+                width: 150px;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 500px) {
+
+            .container {
+                padding: 25px;
+                border-radius: 20px;
+            }
+
+            .heading h2 {
+                font-size: 27px;
+            }
+
+            input {
+                height: 46px;
+            }
+
+            button {
+                height: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Video -->
+    <video class="video-bg" autoplay muted loop playsinline>
+        <source src="background.mp4" type="video/mp4">
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <!-- Animated Glowing Orbs -->
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+
+    <!-- Registration Card -->
+
+    <div class="container">
+
+        <div class="heading">
+            <h2>Create Account</h2>
+            <p>Register to continue to your account</p>
+        </div>
+
+        <form onsubmit="return validateForm()">
+
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="mobile">Mobile Number</label>
+                <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    maxlength="10"
+                    placeholder="Enter 10 digit mobile number"
+                >
+            </div>
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- Success Animation -->
+
+    <div class="success-screen" id="successScreen">
+
+        <div class="success-box">
+
+            <div class="check-circle">
+                <div class="check"></div>
+            </div>
+
+            <h2>Registration Successful!</h2>
+
+            <p>
+                Your account has been created successfully.
+            </p>
+
+            <div class="success-line"></div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function validateForm() {
+
+            var name =
+                document.getElementById("name").value.trim();
+
+            var email =
+                document.getElementById("email").value.trim();
+
+            var password =
+                document.getElementById("password").value.trim();
+
+            var mobile =
+                document.getElementById("mobile").value.trim();
+
+
+            /* Empty field validation */
+
+            if (
+                name === "" ||
+                email === "" ||
+                password === "" ||
+                mobile === ""
+            ) {
+                alert("All fields must be filled out.");
+                return false;
+            }
+
+
+            /* Name validation */
+
+            if (name.length < 3) {
+                alert("Name must contain at least 3 characters.");
+                return false;
+            }
+
+
+            /* Password validation */
+
+            if (password.length < 6) {
+                alert("Password must contain at least 6 characters.");
+                return false;
+            }
+
+
+            /* Mobile validation */
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+                alert("Please enter a valid 10-digit mobile number.");
+                return false;
+            }
+
+
+            /* Email validation */
+
+            var emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+
+            /* Show success animation */
+
+            showSuccess();
+
+            return false;
+        }
+
+
+        function showSuccess() {
+
+            const successScreen =
+                document.getElementById("successScreen");
+
+            successScreen.classList.add("active");
+
+
+            /* Optional: hide success screen after 3.5 seconds */
+
+            setTimeout(function () {
+
+                successScreen.classList.remove("active");
+
+            }, 3500);
+        }
+
+    </script>
+
+</body>
+</html>
