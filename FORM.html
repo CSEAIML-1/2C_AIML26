@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation in javascript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        div {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: rgb(171, 255, 234);
+        }
+        h2{
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button{
+            border-radius: 20px;
+            background-color: rgb(37, 255, 143);
+            color: rgb(10, 10, 10);
+            font-weight: 200;
+            align-self: center;
+
+        }
+
+        button::hover{
+
+            transform: translateY(-3px);
+
+             box-shadow:
+                0 15px 40px rgba(145, 54, 255, 0.55),
+                0 0 25px rgba(190, 70, 255, 0.25);
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <h2>Registration</h2>
+        <form onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="mobile">Mobile:</label>
+            <input type="tel" id="mobile" name="mobile"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var mobile = document.getElementById("mobile").value;
+
+            if (name == "" || email == "" || password == "" || mobile == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+
+            if(mobile.length != 10 || isNaN(mobile) || typeof(mobile) !== 'number') {
+                alert("Invalid mobile number.");
+                return false;
+            }
+
+            if(email.indexOf("@") == -1 || email.indexOf(".") == -1 || email.indexOf("@") > email.lastIndexOf(".") || email.indexOf("@") == 0 || email.lastIndexOf(".") == email.length - 1) {
+                alert("Invalid email address.");
+                return false;
+            }
+
+
+            return true;
+        }
+    </script>
+    
+</body>
+</html>
