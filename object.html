@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student-OOPS</title>
+</head>
+<body>
+
+<script>
+    let student = {
+        name: "Dhruv Kumar Sharma",
+        id: 3045,
+        city: "Ghaziabad",
+
+        learning: function() {
+            console.log("Tech SUBJECTS");
+        },
+
+        greet: function() {
+            console.log(`Hello, my name is ${this.name} and my ID is ${this.id}.`);
+        }
+    };
+
+    student.pincode = 201001;
+
+    student.yoga = function() {
+        console.log("I am doing yoga");
+    };
+
+    student.learning();
+    student.greet();
+    student.yoga();
+
+    console.log(student);
+</script>
+
+</body>
+</html>
