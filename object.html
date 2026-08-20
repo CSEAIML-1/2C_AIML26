@@ -14,7 +14,7 @@
         city: "Ghaziabad",
 
         learning: function() {
-            console.log("Tech SUBJECTS");
+            console.log("TECH SUBJECTS");
         },
 
         greet: function() {
@@ -33,6 +33,30 @@
     student.yoga();
 
     console.log(student);
+
+
+    class Student {
+        constructor(id, name, city) {
+            this.id = id;
+            this.name = name;
+            this.city = city;
+        }
+
+        studentDetails() {
+            console.log(`ID: ${this.id}`);
+            console.log(`Name: ${this.name}`);
+            console.log(`City: ${this.city}`);
+        }
+    }
+
+    let s1 = new Student(101, "Vikas", "Ghaziabad");
+    let s2 = new Student(102, "Dhruv", "Noida");
+
+    s1.studentDetails();
+    s2.studentDetails();
+
+    console.log(s1);
+    console.log(s2);
 </script>
 
 </body>

@@ -68,7 +68,7 @@
             <input type="password" id="password" name="password"><br><br>
             <label for="mobile">Mobile:</label>
             <input type="tel" id="mobile" name="mobile"><br><br>
-            <button type="submit">Submit</button>
+            <button type="submit" onclick="submit()">Submit</button>
         </form>
     </div>
 
@@ -84,7 +84,7 @@
                 return false;
             }
 
-            if(mobile.length != 10 || isNaN(mobile) || typeof(mobile) !== 'number') {
+            if(mobile.length != 10  && typeof(mobile) !== 'number') {
                 alert("Invalid mobile number.");
                 return false;
             }
@@ -97,6 +97,16 @@
 
             return true;
         }
+
+        function submit(){
+            if(validateForm() = true){
+                alert("Form Submitted successfully!!.");
+            }
+            else{
+                alert("Submission error!!.");
+            }
+        }
+
     </script>
     
 </body>
