@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+</head>
+<body>
+
+    <h2>Product Information</h2>
+
+    <p id="productInfo"></p>
+
+    <button onclick="product.updateQuantity(5); product.displayInfo();">
+        Update Quantity
+    </button>
+
+    <script>
+        let product = {
+    productId: 101,
+    productName: "Laptop",
+    price: 50000,
+    quantity: 2,
+
+    TotalPrice: function() {
+        return this.price * this.quantity;
+    },
+
+    updateQuantity: function(newQuantity) {
+        this.quantity = newQuantity;
+    },
+
+    displayInfo: function() {
+        document.getElementById("productInfo").innerHTML =
+            "Product ID: " + this.productId + "<br>" +
+            "Product Name: " + this.productName + "<br>" +
+            "Price: ₹" + this.price + "<br>" +
+            "Quantity: " + this.quantity + "<br>" +
+            "Total Price: ₹" + this.TotalPrice();
+    }
+};
+
+product.displayInfo();
+    </script>
+</body>
+</html>
