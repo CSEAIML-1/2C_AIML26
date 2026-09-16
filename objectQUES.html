@@ -4,6 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
+    <style>
+        body {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        #productInfo {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            line-height: 1.8;
+            color: #555;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,12 +48,11 @@
     </button>
 
     <script>
-        let product = {
-    productId: 101,
-    productName: "Laptop",
-    price: 50000,
-    quantity: 2,
-
+    let product = {
+    productId: 67,
+    productName: "Product 1",
+    price: 100,
+    quantity: 12,
     TotalPrice: function() {
         return this.price * this.quantity;
     },
@@ -29,17 +60,10 @@
     updateQuantity: function(newQuantity) {
         this.quantity = newQuantity;
     },
-
     displayInfo: function() {
-        document.getElementById("productInfo").innerHTML =
-            "Product ID: " + this.productId + "<br>" +
-            "Product Name: " + this.productName + "<br>" +
-            "Price: ₹" + this.price + "<br>" +
-            "Quantity: " + this.quantity + "<br>" +
-            "Total Price: ₹" + this.TotalPrice();
+        document.getElementById("productInfo").innerHTML = "Product ID: " + this.productId + "<br>" + "Product Name: " + this.productName + "<br>" + "Price: ₹" + this.price + "<br>" + "Quantity: " + this.quantity + "<br>" + "Total Price: ₹" + this.TotalPrice();
     }
 };
-
 product.displayInfo();
     </script>
 </body>

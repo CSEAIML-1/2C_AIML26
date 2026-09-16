@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Operator</title>
+</head>
+<body>
+    <script>
+        let data = [10,20,30,40,50];
+        let a = [1,2,3,4,5];
+        let b = [6,7,8,9,10];
+        function sum(...args)   {   
+            let sum = 0;
+            for(let i of args){
+                sum = sum + i;
+            }
+            console.log(sum);
+        }
+
+        sum(...data);
+        let c = [...a,...b];
+        console.log(c);
+    </script>
+</body>
+</html>

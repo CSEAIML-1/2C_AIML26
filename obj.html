@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>product management</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <h2>Product Management</h2>
+
+    <p id="ProductsInfo"></p>
+
+
+    <button onclick="U_quantity(5)">Update Quantity By 5</button>
+    <script>
+        let Products = {
+
+            ID : 25032,
+            P_name : "Product 1",
+            P_price : 4500,
+            P_quantity : 15,
+
+            TotalPrice : function(){
+                return this.P_price * this.P_quantity;
+            },
+
+            U_qauntity: function(newQuantity){
+                this.P_quantity = newQuantity;
+            },
+
+           display: function() {
+        document.getElementById("ProductsInfo").innerHTML = "Product ID: " + this.ID + "<br>" + "Product Name: " + this.P_name + "<br>" + "Price: ₹" + this.P_price + "<br>" + "Quantity: " + this.P_quantity + "<br>" + "Total Price: ₹" + this.TotalPrice();
+    }
+
+        };
+        Products.display();
+    </script>
+    
+</body>
+</html>
