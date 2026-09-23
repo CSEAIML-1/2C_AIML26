@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account Management System</title>
+</head>
+<body>
+    <script>
+        class BankAccount {
+            constructor(a, h, b) {
+                this.accountNo = a;
+                this.holderName = h;
+                this.balance = b;
+            }
+
+            deposit(x) {
+                this.balance += x;
+                document.write(x + " deposit successfully !!<br>");
+                document.write("---------------<br>");
+            }
+
+            withdraw(y) {
+                if (this.balance >= y) {
+                    this.balance -= y;
+                    document.write(y + " withdraw successful !!<br>");
+                } else {
+                    document.write("Insufficient balance !!<br>");
+                }
+
+                document.write("---------------<br>");
+            }
+
+            displayBalance() {
+                document.write("Balance: " + this.balance + "<br>");
+                document.write("----------------<br>");
+            }
+
+            static bankInfo() {
+                document.write("Bank Name: Children Bank Of India<br>");
+                document.write("IFSC code: SBI637144746<br>");
+            }
+        }
+
+        const a1 = new BankAccount(100, "Dhruv", 500);
+        a1.displayBalance();
+        a1.deposit(240);
+        a1.displayBalance()
+        a1.withdraw(300);
+        a1.displayBalance();
+
+        BankAccount.bankInfo();
+    </script>
+</body>
+</html>
