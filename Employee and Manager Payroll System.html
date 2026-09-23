@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee and Manager Payroll System</title>
+</head>
+<body>
+    <script>
+        class Employee {
+            constructor(id, name, basicSalary) {
+                this.id = id;
+                this.name = name;
+                this.basicSalary = basicSalary;
+            }
+
+            calculateSalary() {
+                return this.basicSalary;
+            }
+        }
+
+        class Manager extends Employee {
+            constructor(id, name, basicSalary, incentive) {
+                super(id, name, basicSalary);
+                this.incentive = incentive;
+            }
+
+            calculateSalary() {
+                return this.basicSalary + this.incentive;
+            }
+        }
+
+        const employee = new Employee(101, "Riya", 30000);
+        const manager = new Manager(102, "Arjun", 50000, 10000);
+
+        document.write("Employee: " + employee.name + "<br>");
+        document.write("Salary: " + employee.calculateSalary() + "<br><br>");
+        document.write("Manager: " + manager.name + "<br>");
+        document.write("Salary: " + manager.calculateSalary());
+    </script>
+</body>
+</html>
