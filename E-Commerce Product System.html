@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Product System</title>
+</head>
+<body>
+    <script>
+        class Product {
+            constructor(i, n, p) {
+                this.productId = i;
+                this.productName = n;
+                this.price = p;
+            }
+
+            getDiscountedPrice(discount) {
+                return this.price - discount;
+            }
+
+            display() {
+                document.write("Product ID: " + this.productId + "<br>");
+                document.write("Product Name: " + this.productName + "<br>");
+                document.write("Price: " + this.price + "<br>");
+            }
+
+            static compareProducts(p1, p2) {
+                const higherPricedProduct = p1.price > p2.price ? p1 : p2;
+                document.write("Higher-priced product: " + higherPricedProduct.productName + " - " + higherPricedProduct.price + "<br>");
+            }
+        }
+
+        class Electronics extends Product {
+            constructor(i, n, p, w) {
+                super(i, n, p);
+                this.warranty = w;
+            }
+
+            display() {
+                super.display();
+                document.write("Warranty: " + this.warranty + "<br>");
+            }
+        }
+
+        const phone = new Electronics("E101", "Smartphone", 800, "2 years");
+        const headphones = new Product("P101", "Headphones", 150);
+
+        phone.display();
+        document.write("Discounted Price: " + phone.getDiscountedPrice(100) + "<br>");
+        Product.compareProducts(phone, headphones);
+    </script>
+</body>
+</html>
